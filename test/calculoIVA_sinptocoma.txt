@@ -1,0 +1,18 @@
+accion prueba _es
+Ambiente
+X:cadena
+Y:entero
+S:entero
+Z:real
+@ calcula el monto con iva de una venta, si la venta supera los $500, se le suman $20
+Proceso
+Escribir("ingrese monto")
+Leer(x)
+Y:=20
+Si (x<500 ) entonces
+Z:= ((X * 1.21) + Y )
+Sino
+Z:= ( X * 1.21 )
+Fin_si
+Escribir ("su monto total es: $", Z )
+Fin_accion

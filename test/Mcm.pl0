@@ -1,0 +1,25 @@
+ACCION mcm _es
+Ambiente
+Num1 : entero
+Num2: entero
+a: entero
+b: entero
+res: entero
+Proceso
+Escribir("ingrese el primer numero");
+Leer (Num1);
+Escribir("ingrese el segundo numero");
+Leer (Num2);
+Si (Num1 > Num2) entonces;
+a:= Num1;
+b:= Num2;
+sino;
+a:= Num2;
+b:= Num1;
+Fin_si;
+Mientras (b <> 0) hacer;
+Res:=b;
+b:=  a _mod b;
+a:= res;
+Fin_Mientras
+fin_accion

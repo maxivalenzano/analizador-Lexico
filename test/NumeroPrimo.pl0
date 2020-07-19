@@ -1,0 +1,23 @@
+ACCION NumerosPrimos _es
+Ambiente
+nro_ingresado : entero
+bool : numero
+aux : entero
+Proceso
+Escribir("ingrese numero entero para saber si es numero primol:");
+leer (nro_ingresado);
+para (aux := 2) hasta nro_ingresado, 1 hacer;
+modulo_ := 2;
+bool := 1;
+mientras (bool = 2 _y modulo < aux) hacer ;
+si ((aux _mod modulo) =0) entonces;
+bool := 0;
+sino;
+modulo := modulo + 1;
+fin_si;
+fin_mientras;
+si (bool = 1) entonces;
+escribir ("el numero es primo", aux);
+fin_si;
+fin_para
+fin_accion

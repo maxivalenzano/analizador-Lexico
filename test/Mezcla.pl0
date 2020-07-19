@@ -1,0 +1,41 @@
+ACCION factorial _es
+Ambiente
+nro_ingresado : numero
+bool : numero
+aux : numero
+res_factorial : entero
+nro_calculo : entero
+opcion:entero
+Proceso
+Escribir('si desea calcular un factorial ingrese 1 o para calcular números primos ingrese 2');
+Leer(opcion);
+Si (opcion=1) entonces;
+	escribir('Ingrese numero a calcular su factorial:'');
+	leer(nro_calculo);
+	res_factorial := 1;
+	mientras (nro_calculo <> 0) hacer;
+		res_factorial := res_factorial * nro_calculo;
+		nro_calculo := nro_calculo - 1;
+	fin_mientras;
+	escribir('El factorial del numero ingresado es :', res_factorial);
+sino;
+	si (opcion=2) entonces;
+		Escribir("ingresé número entero para saber si es número primol:");
+		leer (nro_ingresado);
+		para (aux := 2) hasta nro_ingresado, 1 hacer;
+			modulo := 2;
+			bool := 1;
+			mientras (bool = 2 _y modulo < aux) hacer ;
+				si (aux _mod modulo =0) entonces;
+					bool := 0;
+				sino;
+					modulo := modulo + 1;
+				fin_si;
+			fin_mientras;
+		si (bool = 1) entonces;
+			escribir ("el numero es primo", aux);
+		fin_si;
+		fin_para;
+	fin_si;
+fin_si
+fin_accion

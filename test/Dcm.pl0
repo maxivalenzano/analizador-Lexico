@@ -1,0 +1,16 @@
+Accion dcm _es
+Ambiente 
+Num1 : entero
+ Num2: entero
+res: entero
+ Proceso
+ Escribir("ingrese el primer numero");
+ Leer (Num1);
+ Escribir("ingrese el segundo numero");
+ Leer (Num2);
+Mientras (Num2 <> 0) hacer;
+Res := Num2;
+Num2:= Num1 _mod Num2;
+Num1:=res;
+Fin_Mientras
+Fin_accion

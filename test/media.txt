@@ -1,0 +1,16 @@
+ACCION Precio_medio _ES;
+AMBIENTE
+precio1:NUMERO
+precio2:NUMERO
+precio3:NUMERO
+media:NUMERO
+PROCESO
+ESC("Introduzca el precio del producto de establecimiento 1, en pesos");
+LEER(precio1);
+ESC("Introduzca el precio del producto de establecimiento 2, en pesos");
+LEER(precio2);
+ESC("Introduzca el precio del producto de establecimiento 3, en pesos");
+LEER(precio3);
+Media:=(precio1+precio2+precio3)/3;
+ESC("El precio del producto es", media,"$");
+FIN_ACCION;

@@ -1,0 +1,2046 @@
+
+
+Unused terminals:
+
+
+Grammar
+
+Rule 1     sigma -> programa
+Rule 2     programa -> titulo bloque final
+Rule 3     titulo -> ACCION ID ES
+Rule 4     titulo -> ACCION ILEGAL ES
+Rule 5     final -> FIN_ACCION
+Rule 6     bloque -> ambient procesos
+Rule 7     bloque -> procesos
+Rule 8     ambient -> AMBIENTE declaraciones
+Rule 9     declaraciones -> ID DOSPUNTOS tipodato
+Rule 10    declaraciones -> ID DOSPUNTOS tipodato declaraciones
+Rule 11    tipodato -> CADENA
+Rule 12    tipodato -> ENTERO
+Rule 13    tipodato -> NUMERO
+Rule 14    tipodato -> NUM
+Rule 15    tipodato -> FLOAT
+Rule 16    tipodato -> REAL
+Rule 17    procesos -> PROCESO listasentencias
+Rule 18    listasentencias -> sentencia PUNTOYCOMA listasentencias
+Rule 19    listasentencias -> sentencia
+Rule 20    listasentencias -> sentencia PUNTOYCOMA
+Rule 21    sentencia -> ID ASIGNACION expresion
+Rule 22    sentencia -> LEER PARENTIZQ ID PARENTDER
+Rule 23    sentencia -> ESCRIBIR PARENTIZQ listext PARENTDER
+Rule 24    text -> TEXTO
+Rule 25    text -> ID
+Rule 26    text -> NUM
+Rule 27    text -> FLOAT
+Rule 28    listext -> text COMA listext
+Rule 29    listext -> text
+Rule 30    sentencia -> REPETIR listasentencias HASTA_QUE cond
+Rule 31    sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias FIN_SI
+Rule 32    sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI
+Rule 33    sentencia -> MIENTRAS cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS
+Rule 34    vinicial -> PARENTIZQ ID ASIGNACION NUM PARENTDER
+Rule 35    vinicial -> PARENTIZQ ID ASIGNACION ID PARENTDER
+Rule 36    vfinal -> NUM
+Rule 37    vfinal -> ID
+Rule 38    sentencia -> PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA
+Rule 39    expresion -> term
+Rule 40    expresion -> agregarOperador term
+Rule 41    expresion -> expresion agregarOperador term
+Rule 42    agregarOperador -> SUMA
+Rule 43    agregarOperador -> RESTA
+Rule 44    term -> factor
+Rule 45    term -> term multiplicarOperador factor
+Rule 46    multiplicarOperador -> PRODUCTO
+Rule 47    multiplicarOperador -> DIVISION
+Rule 48    multiplicarOperador -> DIV
+Rule 49    multiplicarOperador -> MOD
+Rule 50    multiplicarOperador -> POTENCIA
+Rule 51    factor -> ID
+Rule 52    factor -> NUM
+Rule 53    factor -> FLOAT
+Rule 54    factor -> PARENTIZQ expresion PARENTDER
+Rule 55    cond -> PARENTIZQ listacondicion PARENTDER
+Rule 56    listacondicion -> condicion
+Rule 57    listacondicion -> condicion CONJUNCION listacondicion
+Rule 58    listacondicion -> condicion DISYUNCION listacondicion
+Rule 59    condicion -> NEGACION expresion
+Rule 60    condicion -> expresion relacion expresion
+Rule 61    relacion -> IGUALQUE
+Rule 62    relacion -> DISTINTO
+Rule 63    relacion -> MENORQUE
+Rule 64    relacion -> MAYORQUE
+Rule 65    relacion -> MENOROIGUAL
+Rule 66    relacion -> MAYOROIGUAL
+Rule 67    relacion -> DISYUNCION
+Rule 68    relacion -> CONJUNCION
+
+Terminals, with rules where they appear
+
+ACCION               : 3 4
+AMBIENTE             : 8
+ASIGNACION           : 21 34 35
+CADENA               : 11
+COMA                 : 28 38
+CONJUNCION           : 57 68
+DISTINTO             : 62
+DISYUNCION           : 58 67
+DIV                  : 48
+DIVISION             : 47
+DOSPUNTOS            : 9 10
+ENTERO               : 12
+ENTONCES             : 31 32
+ES                   : 3 4
+ESCRIBIR             : 23
+FIN_ACCION           : 5
+FIN_MIENTRAS         : 33
+FIN_PARA             : 38
+FIN_SI               : 31 32
+FLOAT                : 15 27 53
+HACER                : 33 38
+HASTA                : 38
+HASTA_QUE            : 30
+ID                   : 3 9 10 21 22 25 34 35 35 37 51
+IGUALQUE             : 61
+ILEGAL               : 4
+LEER                 : 22
+MAYOROIGUAL          : 66
+MAYORQUE             : 64
+MENOROIGUAL          : 65
+MENORQUE             : 63
+MIENTRAS             : 33
+MOD                  : 49
+NEGACION             : 59
+NUM                  : 14 26 34 36 38 52
+NUMERO               : 13
+PARA                 : 38
+PARENTDER            : 22 23 34 35 54 55
+PARENTIZQ            : 22 23 34 35 54 55
+POTENCIA             : 50
+PROCESO              : 17
+PRODUCTO             : 46
+PUNTOYCOMA           : 18 20 31 32 32 33 38
+REAL                 : 16
+REPETIR              : 30
+RESTA                : 43
+SI                   : 31 32
+SINO                 : 32
+SUMA                 : 42
+TEXTO                : 24
+error                : 
+
+Nonterminals, with rules where they appear
+
+agregarOperador      : 40 41
+ambient              : 6
+bloque               : 2
+cond                 : 30 31 32 33
+condicion            : 56 57 58
+declaraciones        : 8 10
+expresion            : 21 41 54 59 60 60
+factor               : 44 45
+final                : 2
+listacondicion       : 55 57 58
+listasentencias      : 17 18 30 31 32 32 33 38
+listext              : 23 28
+multiplicarOperador  : 45
+procesos             : 6 7
+programa             : 1
+relacion             : 60
+sentencia            : 18 19 20
+sigma                : 0
+term                 : 39 40 41 45
+text                 : 28 29
+tipodato             : 9 10
+titulo               : 2
+vfinal               : 38
+vinicial             : 38
+
+
+Parsing method: LALR
+
+
+state 0
+
+    (0) S' -> . sigma
+    (1) sigma -> . programa
+    (2) programa -> . titulo bloque final
+    (3) titulo -> . ACCION ID ES
+    (4) titulo -> . ACCION ILEGAL ES
+
+    ACCION          shift and go to state 1
+
+
+    titulo                         shift and go to state 3
+    sigma                          shift and go to state 4
+    programa                       shift and go to state 2
+
+state 1
+
+    (3) titulo -> ACCION . ID ES
+    (4) titulo -> ACCION . ILEGAL ES
+
+    ID              shift and go to state 6
+    ILEGAL          shift and go to state 5
+
+
+
+state 2
+
+    (1) sigma -> programa .
+
+    $end            reduce using rule 1 (sigma -> programa .)
+
+
+
+state 3
+
+    (2) programa -> titulo . bloque final
+    (6) bloque -> . ambient procesos
+    (7) bloque -> . procesos
+    (8) ambient -> . AMBIENTE declaraciones
+    (17) procesos -> . PROCESO listasentencias
+
+    AMBIENTE        shift and go to state 11
+    PROCESO         shift and go to state 8
+
+
+    procesos                       shift and go to state 7
+    ambient                        shift and go to state 9
+    bloque                         shift and go to state 10
+
+state 4
+
+    (0) S' -> sigma .
+
+
+
+
+state 5
+
+    (4) titulo -> ACCION ILEGAL . ES
+
+    ES              shift and go to state 12
+
+
+
+state 6
+
+    (3) titulo -> ACCION ID . ES
+
+    ES              shift and go to state 13
+
+
+
+state 7
+
+    (7) bloque -> procesos .
+
+    FIN_ACCION      reduce using rule 7 (bloque -> procesos .)
+
+
+
+state 8
+
+    (17) procesos -> PROCESO . listasentencias
+    (18) listasentencias -> . sentencia PUNTOYCOMA listasentencias
+    (19) listasentencias -> . sentencia
+    (20) listasentencias -> . sentencia PUNTOYCOMA
+    (21) sentencia -> . ID ASIGNACION expresion
+    (22) sentencia -> . LEER PARENTIZQ ID PARENTDER
+    (23) sentencia -> . ESCRIBIR PARENTIZQ listext PARENTDER
+    (30) sentencia -> . REPETIR listasentencias HASTA_QUE cond
+    (31) sentencia -> . SI cond ENTONCES PUNTOYCOMA listasentencias FIN_SI
+    (32) sentencia -> . SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI
+    (33) sentencia -> . MIENTRAS cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS
+    (38) sentencia -> . PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA
+
+    ID              shift and go to state 20
+    LEER            shift and go to state 21
+    ESCRIBIR        shift and go to state 16
+    REPETIR         shift and go to state 17
+    SI              shift and go to state 22
+    MIENTRAS        shift and go to state 19
+    PARA            shift and go to state 14
+
+
+    listasentencias                shift and go to state 18
+    sentencia                      shift and go to state 15
+
+state 9
+
+    (6) bloque -> ambient . procesos
+    (17) procesos -> . PROCESO listasentencias
+
+    PROCESO         shift and go to state 8
+
+
+    procesos                       shift and go to state 23
+
+state 10
+
+    (2) programa -> titulo bloque . final
+    (5) final -> . FIN_ACCION
+
+    FIN_ACCION      shift and go to state 25
+
+
+    final                          shift and go to state 24
+
+state 11
+
+    (8) ambient -> AMBIENTE . declaraciones
+    (9) declaraciones -> . ID DOSPUNTOS tipodato
+    (10) declaraciones -> . ID DOSPUNTOS tipodato declaraciones
+
+    ID              shift and go to state 27
+
+
+    declaraciones                  shift and go to state 26
+
+state 12
+
+    (4) titulo -> ACCION ILEGAL ES .
+
+    AMBIENTE        reduce using rule 4 (titulo -> ACCION ILEGAL ES .)
+    PROCESO         reduce using rule 4 (titulo -> ACCION ILEGAL ES .)
+
+
+
+state 13
+
+    (3) titulo -> ACCION ID ES .
+
+    AMBIENTE        reduce using rule 3 (titulo -> ACCION ID ES .)
+    PROCESO         reduce using rule 3 (titulo -> ACCION ID ES .)
+
+
+
+state 14
+
+    (38) sentencia -> PARA . vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA
+    (34) vinicial -> . PARENTIZQ ID ASIGNACION NUM PARENTDER
+    (35) vinicial -> . PARENTIZQ ID ASIGNACION ID PARENTDER
+
+    PARENTIZQ       shift and go to state 29
+
+
+    vinicial                       shift and go to state 28
+
+state 15
+
+    (18) listasentencias -> sentencia . PUNTOYCOMA listasentencias
+    (19) listasentencias -> sentencia .
+    (20) listasentencias -> sentencia . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 30
+    FIN_ACCION      reduce using rule 19 (listasentencias -> sentencia .)
+    HASTA_QUE       reduce using rule 19 (listasentencias -> sentencia .)
+    FIN_MIENTRAS    reduce using rule 19 (listasentencias -> sentencia .)
+    FIN_SI          reduce using rule 19 (listasentencias -> sentencia .)
+    SINO            reduce using rule 19 (listasentencias -> sentencia .)
+    FIN_PARA        reduce using rule 19 (listasentencias -> sentencia .)
+
+
+
+state 16
+
+    (23) sentencia -> ESCRIBIR . PARENTIZQ listext PARENTDER
+
+    PARENTIZQ       shift and go to state 31
+
+
+
+state 17
+
+    (30) sentencia -> REPETIR . listasentencias HASTA_QUE cond
+    (18) listasentencias -> . sentencia PUNTOYCOMA listasentencias
+    (19) listasentencias -> . sentencia
+    (20) listasentencias -> . sentencia PUNTOYCOMA
+    (21) sentencia -> . ID ASIGNACION expresion
+    (22) sentencia -> . LEER PARENTIZQ ID PARENTDER
+    (23) sentencia -> . ESCRIBIR PARENTIZQ listext PARENTDER
+    (30) sentencia -> . REPETIR listasentencias HASTA_QUE cond
+    (31) sentencia -> . SI cond ENTONCES PUNTOYCOMA listasentencias FIN_SI
+    (32) sentencia -> . SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI
+    (33) sentencia -> . MIENTRAS cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS
+    (38) sentencia -> . PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA
+
+    ID              shift and go to state 20
+    LEER            shift and go to state 21
+    ESCRIBIR        shift and go to state 16
+    REPETIR         shift and go to state 17
+    SI              shift and go to state 22
+    MIENTRAS        shift and go to state 19
+    PARA            shift and go to state 14
+
+
+    listasentencias                shift and go to state 32
+    sentencia                      shift and go to state 15
+
+state 18
+
+    (17) procesos -> PROCESO listasentencias .
+
+    FIN_ACCION      reduce using rule 17 (procesos -> PROCESO listasentencias .)
+
+
+
+state 19
+
+    (33) sentencia -> MIENTRAS . cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS
+    (55) cond -> . PARENTIZQ listacondicion PARENTDER
+
+    PARENTIZQ       shift and go to state 33
+
+
+    cond                           shift and go to state 34
+
+state 20
+
+    (21) sentencia -> ID . ASIGNACION expresion
+
+    ASIGNACION      shift and go to state 35
+
+
+
+state 21
+
+    (22) sentencia -> LEER . PARENTIZQ ID PARENTDER
+
+    PARENTIZQ       shift and go to state 36
+
+
+
+state 22
+
+    (31) sentencia -> SI . cond ENTONCES PUNTOYCOMA listasentencias FIN_SI
+    (32) sentencia -> SI . cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI
+    (55) cond -> . PARENTIZQ listacondicion PARENTDER
+
+    PARENTIZQ       shift and go to state 33
+
+
+    cond                           shift and go to state 37
+
+state 23
+
+    (6) bloque -> ambient procesos .
+
+    FIN_ACCION      reduce using rule 6 (bloque -> ambient procesos .)
+
+
+
+state 24
+
+    (2) programa -> titulo bloque final .
+
+    $end            reduce using rule 2 (programa -> titulo bloque final .)
+
+
+
+state 25
+
+    (5) final -> FIN_ACCION .
+
+    $end            reduce using rule 5 (final -> FIN_ACCION .)
+
+
+
+state 26
+
+    (8) ambient -> AMBIENTE declaraciones .
+
+    PROCESO         reduce using rule 8 (ambient -> AMBIENTE declaraciones .)
+
+
+
+state 27
+
+    (9) declaraciones -> ID . DOSPUNTOS tipodato
+    (10) declaraciones -> ID . DOSPUNTOS tipodato declaraciones
+
+    DOSPUNTOS       shift and go to state 38
+
+
+
+state 28
+
+    (38) sentencia -> PARA vinicial . HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA
+
+    HASTA           shift and go to state 39
+
+
+
+state 29
+
+    (34) vinicial -> PARENTIZQ . ID ASIGNACION NUM PARENTDER
+    (35) vinicial -> PARENTIZQ . ID ASIGNACION ID PARENTDER
+
+    ID              shift and go to state 40
+
+
+
+state 30
+
+    (18) listasentencias -> sentencia PUNTOYCOMA . listasentencias
+    (20) listasentencias -> sentencia PUNTOYCOMA .
+    (18) listasentencias -> . sentencia PUNTOYCOMA listasentencias
+    (19) listasentencias -> . sentencia
+    (20) listasentencias -> . sentencia PUNTOYCOMA
+    (21) sentencia -> . ID ASIGNACION expresion
+    (22) sentencia -> . LEER PARENTIZQ ID PARENTDER
+    (23) sentencia -> . ESCRIBIR PARENTIZQ listext PARENTDER
+    (30) sentencia -> . REPETIR listasentencias HASTA_QUE cond
+    (31) sentencia -> . SI cond ENTONCES PUNTOYCOMA listasentencias FIN_SI
+    (32) sentencia -> . SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI
+    (33) sentencia -> . MIENTRAS cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS
+    (38) sentencia -> . PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA
+
+    FIN_ACCION      reduce using rule 20 (listasentencias -> sentencia PUNTOYCOMA .)
+    HASTA_QUE       reduce using rule 20 (listasentencias -> sentencia PUNTOYCOMA .)
+    FIN_MIENTRAS    reduce using rule 20 (listasentencias -> sentencia PUNTOYCOMA .)
+    FIN_SI          reduce using rule 20 (listasentencias -> sentencia PUNTOYCOMA .)
+    SINO            reduce using rule 20 (listasentencias -> sentencia PUNTOYCOMA .)
+    FIN_PARA        reduce using rule 20 (listasentencias -> sentencia PUNTOYCOMA .)
+    ID              shift and go to state 20
+    LEER            shift and go to state 21
+    ESCRIBIR        shift and go to state 16
+    REPETIR         shift and go to state 17
+    SI              shift and go to state 22
+    MIENTRAS        shift and go to state 19
+    PARA            shift and go to state 14
+
+
+    sentencia                      shift and go to state 15
+    listasentencias                shift and go to state 41
+
+state 31
+
+    (23) sentencia -> ESCRIBIR PARENTIZQ . listext PARENTDER
+    (28) listext -> . text COMA listext
+    (29) listext -> . text
+    (24) text -> . TEXTO
+    (25) text -> . ID
+    (26) text -> . NUM
+    (27) text -> . FLOAT
+
+    TEXTO           shift and go to state 44
+    ID              shift and go to state 46
+    NUM             shift and go to state 45
+    FLOAT           shift and go to state 42
+
+
+    text                           shift and go to state 43
+    listext                        shift and go to state 47
+
+state 32
+
+    (30) sentencia -> REPETIR listasentencias . HASTA_QUE cond
+
+    HASTA_QUE       shift and go to state 48
+
+
+
+state 33
+
+    (55) cond -> PARENTIZQ . listacondicion PARENTDER
+    (56) listacondicion -> . condicion
+    (57) listacondicion -> . condicion CONJUNCION listacondicion
+    (58) listacondicion -> . condicion DISYUNCION listacondicion
+    (59) condicion -> . NEGACION expresion
+    (60) condicion -> . expresion relacion expresion
+    (39) expresion -> . term
+    (40) expresion -> . agregarOperador term
+    (41) expresion -> . expresion agregarOperador term
+    (44) term -> . factor
+    (45) term -> . term multiplicarOperador factor
+    (42) agregarOperador -> . SUMA
+    (43) agregarOperador -> . RESTA
+    (51) factor -> . ID
+    (52) factor -> . NUM
+    (53) factor -> . FLOAT
+    (54) factor -> . PARENTIZQ expresion PARENTDER
+
+    NEGACION        shift and go to state 51
+    SUMA            shift and go to state 61
+    RESTA           shift and go to state 54
+    ID              shift and go to state 55
+    NUM             shift and go to state 53
+    FLOAT           shift and go to state 52
+    PARENTIZQ       shift and go to state 60
+
+
+    expresion                      shift and go to state 59
+    term                           shift and go to state 49
+    listacondicion                 shift and go to state 50
+    condicion                      shift and go to state 56
+    factor                         shift and go to state 57
+    agregarOperador                shift and go to state 58
+
+state 34
+
+    (33) sentencia -> MIENTRAS cond . HACER PUNTOYCOMA listasentencias FIN_MIENTRAS
+
+    HACER           shift and go to state 62
+
+
+
+state 35
+
+    (21) sentencia -> ID ASIGNACION . expresion
+    (39) expresion -> . term
+    (40) expresion -> . agregarOperador term
+    (41) expresion -> . expresion agregarOperador term
+    (44) term -> . factor
+    (45) term -> . term multiplicarOperador factor
+    (42) agregarOperador -> . SUMA
+    (43) agregarOperador -> . RESTA
+    (51) factor -> . ID
+    (52) factor -> . NUM
+    (53) factor -> . FLOAT
+    (54) factor -> . PARENTIZQ expresion PARENTDER
+
+    SUMA            shift and go to state 61
+    RESTA           shift and go to state 54
+    ID              shift and go to state 55
+    NUM             shift and go to state 53
+    FLOAT           shift and go to state 52
+    PARENTIZQ       shift and go to state 60
+
+
+    expresion                      shift and go to state 63
+    agregarOperador                shift and go to state 58
+    term                           shift and go to state 49
+    factor                         shift and go to state 57
+
+state 36
+
+    (22) sentencia -> LEER PARENTIZQ . ID PARENTDER
+
+    ID              shift and go to state 64
+
+
+
+state 37
+
+    (31) sentencia -> SI cond . ENTONCES PUNTOYCOMA listasentencias FIN_SI
+    (32) sentencia -> SI cond . ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI
+
+    ENTONCES        shift and go to state 65
+
+
+
+state 38
+
+    (9) declaraciones -> ID DOSPUNTOS . tipodato
+    (10) declaraciones -> ID DOSPUNTOS . tipodato declaraciones
+    (11) tipodato -> . CADENA
+    (12) tipodato -> . ENTERO
+    (13) tipodato -> . NUMERO
+    (14) tipodato -> . NUM
+    (15) tipodato -> . FLOAT
+    (16) tipodato -> . REAL
+
+    CADENA          shift and go to state 67
+    ENTERO          shift and go to state 72
+    NUMERO          shift and go to state 70
+    NUM             shift and go to state 71
+    FLOAT           shift and go to state 69
+    REAL            shift and go to state 66
+
+
+    tipodato                       shift and go to state 68
+
+state 39
+
+    (38) sentencia -> PARA vinicial HASTA . vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA
+    (36) vfinal -> . NUM
+    (37) vfinal -> . ID
+
+    NUM             shift and go to state 74
+    ID              shift and go to state 75
+
+
+    vfinal                         shift and go to state 73
+
+state 40
+
+    (34) vinicial -> PARENTIZQ ID . ASIGNACION NUM PARENTDER
+    (35) vinicial -> PARENTIZQ ID . ASIGNACION ID PARENTDER
+
+    ASIGNACION      shift and go to state 76
+
+
+
+state 41
+
+    (18) listasentencias -> sentencia PUNTOYCOMA listasentencias .
+
+    FIN_ACCION      reduce using rule 18 (listasentencias -> sentencia PUNTOYCOMA listasentencias .)
+    HASTA_QUE       reduce using rule 18 (listasentencias -> sentencia PUNTOYCOMA listasentencias .)
+    FIN_MIENTRAS    reduce using rule 18 (listasentencias -> sentencia PUNTOYCOMA listasentencias .)
+    FIN_SI          reduce using rule 18 (listasentencias -> sentencia PUNTOYCOMA listasentencias .)
+    SINO            reduce using rule 18 (listasentencias -> sentencia PUNTOYCOMA listasentencias .)
+    FIN_PARA        reduce using rule 18 (listasentencias -> sentencia PUNTOYCOMA listasentencias .)
+
+
+
+state 42
+
+    (27) text -> FLOAT .
+
+    COMA            reduce using rule 27 (text -> FLOAT .)
+    PARENTDER       reduce using rule 27 (text -> FLOAT .)
+
+
+
+state 43
+
+    (28) listext -> text . COMA listext
+    (29) listext -> text .
+
+    COMA            shift and go to state 77
+    PARENTDER       reduce using rule 29 (listext -> text .)
+
+
+
+state 44
+
+    (24) text -> TEXTO .
+
+    COMA            reduce using rule 24 (text -> TEXTO .)
+    PARENTDER       reduce using rule 24 (text -> TEXTO .)
+
+
+
+state 45
+
+    (26) text -> NUM .
+
+    COMA            reduce using rule 26 (text -> NUM .)
+    PARENTDER       reduce using rule 26 (text -> NUM .)
+
+
+
+state 46
+
+    (25) text -> ID .
+
+    COMA            reduce using rule 25 (text -> ID .)
+    PARENTDER       reduce using rule 25 (text -> ID .)
+
+
+
+state 47
+
+    (23) sentencia -> ESCRIBIR PARENTIZQ listext . PARENTDER
+
+    PARENTDER       shift and go to state 78
+
+
+
+state 48
+
+    (30) sentencia -> REPETIR listasentencias HASTA_QUE . cond
+    (55) cond -> . PARENTIZQ listacondicion PARENTDER
+
+    PARENTIZQ       shift and go to state 33
+
+
+    cond                           shift and go to state 79
+
+state 49
+
+    (39) expresion -> term .
+    (45) term -> term . multiplicarOperador factor
+    (46) multiplicarOperador -> . PRODUCTO
+    (47) multiplicarOperador -> . DIVISION
+    (48) multiplicarOperador -> . DIV
+    (49) multiplicarOperador -> . MOD
+    (50) multiplicarOperador -> . POTENCIA
+
+    SUMA            reduce using rule 39 (expresion -> term .)
+    RESTA           reduce using rule 39 (expresion -> term .)
+    PUNTOYCOMA      reduce using rule 39 (expresion -> term .)
+    FIN_ACCION      reduce using rule 39 (expresion -> term .)
+    HASTA_QUE       reduce using rule 39 (expresion -> term .)
+    FIN_MIENTRAS    reduce using rule 39 (expresion -> term .)
+    FIN_SI          reduce using rule 39 (expresion -> term .)
+    SINO            reduce using rule 39 (expresion -> term .)
+    FIN_PARA        reduce using rule 39 (expresion -> term .)
+    IGUALQUE        reduce using rule 39 (expresion -> term .)
+    DISTINTO        reduce using rule 39 (expresion -> term .)
+    MENORQUE        reduce using rule 39 (expresion -> term .)
+    MAYORQUE        reduce using rule 39 (expresion -> term .)
+    MENOROIGUAL     reduce using rule 39 (expresion -> term .)
+    MAYOROIGUAL     reduce using rule 39 (expresion -> term .)
+    DISYUNCION      reduce using rule 39 (expresion -> term .)
+    CONJUNCION      reduce using rule 39 (expresion -> term .)
+    PARENTDER       reduce using rule 39 (expresion -> term .)
+    PRODUCTO        shift and go to state 81
+    DIVISION        shift and go to state 80
+    DIV             shift and go to state 84
+    MOD             shift and go to state 85
+    POTENCIA        shift and go to state 82
+
+
+    multiplicarOperador            shift and go to state 83
+
+state 50
+
+    (55) cond -> PARENTIZQ listacondicion . PARENTDER
+
+    PARENTDER       shift and go to state 86
+
+
+
+state 51
+
+    (59) condicion -> NEGACION . expresion
+    (39) expresion -> . term
+    (40) expresion -> . agregarOperador term
+    (41) expresion -> . expresion agregarOperador term
+    (44) term -> . factor
+    (45) term -> . term multiplicarOperador factor
+    (42) agregarOperador -> . SUMA
+    (43) agregarOperador -> . RESTA
+    (51) factor -> . ID
+    (52) factor -> . NUM
+    (53) factor -> . FLOAT
+    (54) factor -> . PARENTIZQ expresion PARENTDER
+
+    SUMA            shift and go to state 61
+    RESTA           shift and go to state 54
+    ID              shift and go to state 55
+    NUM             shift and go to state 53
+    FLOAT           shift and go to state 52
+    PARENTIZQ       shift and go to state 60
+
+
+    expresion                      shift and go to state 87
+    agregarOperador                shift and go to state 58
+    term                           shift and go to state 49
+    factor                         shift and go to state 57
+
+state 52
+
+    (53) factor -> FLOAT .
+
+    PRODUCTO        reduce using rule 53 (factor -> FLOAT .)
+    DIVISION        reduce using rule 53 (factor -> FLOAT .)
+    DIV             reduce using rule 53 (factor -> FLOAT .)
+    MOD             reduce using rule 53 (factor -> FLOAT .)
+    POTENCIA        reduce using rule 53 (factor -> FLOAT .)
+    SUMA            reduce using rule 53 (factor -> FLOAT .)
+    RESTA           reduce using rule 53 (factor -> FLOAT .)
+    PUNTOYCOMA      reduce using rule 53 (factor -> FLOAT .)
+    FIN_ACCION      reduce using rule 53 (factor -> FLOAT .)
+    HASTA_QUE       reduce using rule 53 (factor -> FLOAT .)
+    FIN_MIENTRAS    reduce using rule 53 (factor -> FLOAT .)
+    FIN_SI          reduce using rule 53 (factor -> FLOAT .)
+    SINO            reduce using rule 53 (factor -> FLOAT .)
+    FIN_PARA        reduce using rule 53 (factor -> FLOAT .)
+    IGUALQUE        reduce using rule 53 (factor -> FLOAT .)
+    DISTINTO        reduce using rule 53 (factor -> FLOAT .)
+    MENORQUE        reduce using rule 53 (factor -> FLOAT .)
+    MAYORQUE        reduce using rule 53 (factor -> FLOAT .)
+    MENOROIGUAL     reduce using rule 53 (factor -> FLOAT .)
+    MAYOROIGUAL     reduce using rule 53 (factor -> FLOAT .)
+    DISYUNCION      reduce using rule 53 (factor -> FLOAT .)
+    CONJUNCION      reduce using rule 53 (factor -> FLOAT .)
+    PARENTDER       reduce using rule 53 (factor -> FLOAT .)
+
+
+
+state 53
+
+    (52) factor -> NUM .
+
+    PRODUCTO        reduce using rule 52 (factor -> NUM .)
+    DIVISION        reduce using rule 52 (factor -> NUM .)
+    DIV             reduce using rule 52 (factor -> NUM .)
+    MOD             reduce using rule 52 (factor -> NUM .)
+    POTENCIA        reduce using rule 52 (factor -> NUM .)
+    SUMA            reduce using rule 52 (factor -> NUM .)
+    RESTA           reduce using rule 52 (factor -> NUM .)
+    PUNTOYCOMA      reduce using rule 52 (factor -> NUM .)
+    FIN_ACCION      reduce using rule 52 (factor -> NUM .)
+    HASTA_QUE       reduce using rule 52 (factor -> NUM .)
+    FIN_MIENTRAS    reduce using rule 52 (factor -> NUM .)
+    FIN_SI          reduce using rule 52 (factor -> NUM .)
+    SINO            reduce using rule 52 (factor -> NUM .)
+    FIN_PARA        reduce using rule 52 (factor -> NUM .)
+    IGUALQUE        reduce using rule 52 (factor -> NUM .)
+    DISTINTO        reduce using rule 52 (factor -> NUM .)
+    MENORQUE        reduce using rule 52 (factor -> NUM .)
+    MAYORQUE        reduce using rule 52 (factor -> NUM .)
+    MENOROIGUAL     reduce using rule 52 (factor -> NUM .)
+    MAYOROIGUAL     reduce using rule 52 (factor -> NUM .)
+    DISYUNCION      reduce using rule 52 (factor -> NUM .)
+    CONJUNCION      reduce using rule 52 (factor -> NUM .)
+    PARENTDER       reduce using rule 52 (factor -> NUM .)
+
+
+
+state 54
+
+    (43) agregarOperador -> RESTA .
+
+    ID              reduce using rule 43 (agregarOperador -> RESTA .)
+    NUM             reduce using rule 43 (agregarOperador -> RESTA .)
+    FLOAT           reduce using rule 43 (agregarOperador -> RESTA .)
+    PARENTIZQ       reduce using rule 43 (agregarOperador -> RESTA .)
+
+
+
+state 55
+
+    (51) factor -> ID .
+
+    PRODUCTO        reduce using rule 51 (factor -> ID .)
+    DIVISION        reduce using rule 51 (factor -> ID .)
+    DIV             reduce using rule 51 (factor -> ID .)
+    MOD             reduce using rule 51 (factor -> ID .)
+    POTENCIA        reduce using rule 51 (factor -> ID .)
+    SUMA            reduce using rule 51 (factor -> ID .)
+    RESTA           reduce using rule 51 (factor -> ID .)
+    PUNTOYCOMA      reduce using rule 51 (factor -> ID .)
+    FIN_ACCION      reduce using rule 51 (factor -> ID .)
+    HASTA_QUE       reduce using rule 51 (factor -> ID .)
+    FIN_MIENTRAS    reduce using rule 51 (factor -> ID .)
+    FIN_SI          reduce using rule 51 (factor -> ID .)
+    SINO            reduce using rule 51 (factor -> ID .)
+    FIN_PARA        reduce using rule 51 (factor -> ID .)
+    IGUALQUE        reduce using rule 51 (factor -> ID .)
+    DISTINTO        reduce using rule 51 (factor -> ID .)
+    MENORQUE        reduce using rule 51 (factor -> ID .)
+    MAYORQUE        reduce using rule 51 (factor -> ID .)
+    MENOROIGUAL     reduce using rule 51 (factor -> ID .)
+    MAYOROIGUAL     reduce using rule 51 (factor -> ID .)
+    DISYUNCION      reduce using rule 51 (factor -> ID .)
+    CONJUNCION      reduce using rule 51 (factor -> ID .)
+    PARENTDER       reduce using rule 51 (factor -> ID .)
+
+
+
+state 56
+
+    (56) listacondicion -> condicion .
+    (57) listacondicion -> condicion . CONJUNCION listacondicion
+    (58) listacondicion -> condicion . DISYUNCION listacondicion
+
+    PARENTDER       reduce using rule 56 (listacondicion -> condicion .)
+    CONJUNCION      shift and go to state 89
+    DISYUNCION      shift and go to state 88
+
+
+
+state 57
+
+    (44) term -> factor .
+
+    PRODUCTO        reduce using rule 44 (term -> factor .)
+    DIVISION        reduce using rule 44 (term -> factor .)
+    DIV             reduce using rule 44 (term -> factor .)
+    MOD             reduce using rule 44 (term -> factor .)
+    POTENCIA        reduce using rule 44 (term -> factor .)
+    SUMA            reduce using rule 44 (term -> factor .)
+    RESTA           reduce using rule 44 (term -> factor .)
+    PUNTOYCOMA      reduce using rule 44 (term -> factor .)
+    FIN_ACCION      reduce using rule 44 (term -> factor .)
+    HASTA_QUE       reduce using rule 44 (term -> factor .)
+    FIN_MIENTRAS    reduce using rule 44 (term -> factor .)
+    FIN_SI          reduce using rule 44 (term -> factor .)
+    SINO            reduce using rule 44 (term -> factor .)
+    FIN_PARA        reduce using rule 44 (term -> factor .)
+    IGUALQUE        reduce using rule 44 (term -> factor .)
+    DISTINTO        reduce using rule 44 (term -> factor .)
+    MENORQUE        reduce using rule 44 (term -> factor .)
+    MAYORQUE        reduce using rule 44 (term -> factor .)
+    MENOROIGUAL     reduce using rule 44 (term -> factor .)
+    MAYOROIGUAL     reduce using rule 44 (term -> factor .)
+    DISYUNCION      reduce using rule 44 (term -> factor .)
+    CONJUNCION      reduce using rule 44 (term -> factor .)
+    PARENTDER       reduce using rule 44 (term -> factor .)
+
+
+
+state 58
+
+    (40) expresion -> agregarOperador . term
+    (44) term -> . factor
+    (45) term -> . term multiplicarOperador factor
+    (51) factor -> . ID
+    (52) factor -> . NUM
+    (53) factor -> . FLOAT
+    (54) factor -> . PARENTIZQ expresion PARENTDER
+
+    ID              shift and go to state 55
+    NUM             shift and go to state 53
+    FLOAT           shift and go to state 52
+    PARENTIZQ       shift and go to state 60
+
+
+    term                           shift and go to state 90
+    factor                         shift and go to state 57
+
+state 59
+
+    (60) condicion -> expresion . relacion expresion
+    (41) expresion -> expresion . agregarOperador term
+    (61) relacion -> . IGUALQUE
+    (62) relacion -> . DISTINTO
+    (63) relacion -> . MENORQUE
+    (64) relacion -> . MAYORQUE
+    (65) relacion -> . MENOROIGUAL
+    (66) relacion -> . MAYOROIGUAL
+    (67) relacion -> . DISYUNCION
+    (68) relacion -> . CONJUNCION
+    (42) agregarOperador -> . SUMA
+    (43) agregarOperador -> . RESTA
+
+    IGUALQUE        shift and go to state 92
+    DISTINTO        shift and go to state 93
+    MENORQUE        shift and go to state 96
+    MAYORQUE        shift and go to state 97
+    MENOROIGUAL     shift and go to state 95
+    MAYOROIGUAL     shift and go to state 94
+    DISYUNCION      shift and go to state 91
+    CONJUNCION      shift and go to state 99
+    SUMA            shift and go to state 61
+    RESTA           shift and go to state 54
+
+
+    agregarOperador                shift and go to state 98
+    relacion                       shift and go to state 100
+
+state 60
+
+    (54) factor -> PARENTIZQ . expresion PARENTDER
+    (39) expresion -> . term
+    (40) expresion -> . agregarOperador term
+    (41) expresion -> . expresion agregarOperador term
+    (44) term -> . factor
+    (45) term -> . term multiplicarOperador factor
+    (42) agregarOperador -> . SUMA
+    (43) agregarOperador -> . RESTA
+    (51) factor -> . ID
+    (52) factor -> . NUM
+    (53) factor -> . FLOAT
+    (54) factor -> . PARENTIZQ expresion PARENTDER
+
+    SUMA            shift and go to state 61
+    RESTA           shift and go to state 54
+    ID              shift and go to state 55
+    NUM             shift and go to state 53
+    FLOAT           shift and go to state 52
+    PARENTIZQ       shift and go to state 60
+
+
+    expresion                      shift and go to state 101
+    agregarOperador                shift and go to state 58
+    term                           shift and go to state 49
+    factor                         shift and go to state 57
+
+state 61
+
+    (42) agregarOperador -> SUMA .
+
+    ID              reduce using rule 42 (agregarOperador -> SUMA .)
+    NUM             reduce using rule 42 (agregarOperador -> SUMA .)
+    FLOAT           reduce using rule 42 (agregarOperador -> SUMA .)
+    PARENTIZQ       reduce using rule 42 (agregarOperador -> SUMA .)
+
+
+
+state 62
+
+    (33) sentencia -> MIENTRAS cond HACER . PUNTOYCOMA listasentencias FIN_MIENTRAS
+
+    PUNTOYCOMA      shift and go to state 102
+
+
+
+state 63
+
+    (21) sentencia -> ID ASIGNACION expresion .
+    (41) expresion -> expresion . agregarOperador term
+    (42) agregarOperador -> . SUMA
+    (43) agregarOperador -> . RESTA
+
+    PUNTOYCOMA      reduce using rule 21 (sentencia -> ID ASIGNACION expresion .)
+    FIN_SI          reduce using rule 21 (sentencia -> ID ASIGNACION expresion .)
+    SINO            reduce using rule 21 (sentencia -> ID ASIGNACION expresion .)
+    FIN_ACCION      reduce using rule 21 (sentencia -> ID ASIGNACION expresion .)
+    HASTA_QUE       reduce using rule 21 (sentencia -> ID ASIGNACION expresion .)
+    FIN_MIENTRAS    reduce using rule 21 (sentencia -> ID ASIGNACION expresion .)
+    FIN_PARA        reduce using rule 21 (sentencia -> ID ASIGNACION expresion .)
+    SUMA            shift and go to state 61
+    RESTA           shift and go to state 54
+
+
+    agregarOperador                shift and go to state 98
+
+state 64
+
+    (22) sentencia -> LEER PARENTIZQ ID . PARENTDER
+
+    PARENTDER       shift and go to state 103
+
+
+
+state 65
+
+    (31) sentencia -> SI cond ENTONCES . PUNTOYCOMA listasentencias FIN_SI
+    (32) sentencia -> SI cond ENTONCES . PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI
+
+    PUNTOYCOMA      shift and go to state 104
+
+
+
+state 66
+
+    (16) tipodato -> REAL .
+
+    ID              reduce using rule 16 (tipodato -> REAL .)
+    PROCESO         reduce using rule 16 (tipodato -> REAL .)
+
+
+
+state 67
+
+    (11) tipodato -> CADENA .
+
+    ID              reduce using rule 11 (tipodato -> CADENA .)
+    PROCESO         reduce using rule 11 (tipodato -> CADENA .)
+
+
+
+state 68
+
+    (9) declaraciones -> ID DOSPUNTOS tipodato .
+    (10) declaraciones -> ID DOSPUNTOS tipodato . declaraciones
+    (9) declaraciones -> . ID DOSPUNTOS tipodato
+    (10) declaraciones -> . ID DOSPUNTOS tipodato declaraciones
+
+    PROCESO         reduce using rule 9 (declaraciones -> ID DOSPUNTOS tipodato .)
+    ID              shift and go to state 27
+
+
+    declaraciones                  shift and go to state 105
+
+state 69
+
+    (15) tipodato -> FLOAT .
+
+    ID              reduce using rule 15 (tipodato -> FLOAT .)
+    PROCESO         reduce using rule 15 (tipodato -> FLOAT .)
+
+
+
+state 70
+
+    (13) tipodato -> NUMERO .
+
+    ID              reduce using rule 13 (tipodato -> NUMERO .)
+    PROCESO         reduce using rule 13 (tipodato -> NUMERO .)
+
+
+
+state 71
+
+    (14) tipodato -> NUM .
+
+    ID              reduce using rule 14 (tipodato -> NUM .)
+    PROCESO         reduce using rule 14 (tipodato -> NUM .)
+
+
+
+state 72
+
+    (12) tipodato -> ENTERO .
+
+    ID              reduce using rule 12 (tipodato -> ENTERO .)
+    PROCESO         reduce using rule 12 (tipodato -> ENTERO .)
+
+
+
+state 73
+
+    (38) sentencia -> PARA vinicial HASTA vfinal . COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA
+
+    COMA            shift and go to state 106
+
+
+
+state 74
+
+    (36) vfinal -> NUM .
+
+    COMA            reduce using rule 36 (vfinal -> NUM .)
+
+
+
+state 75
+
+    (37) vfinal -> ID .
+
+    COMA            reduce using rule 37 (vfinal -> ID .)
+
+
+
+state 76
+
+    (34) vinicial -> PARENTIZQ ID ASIGNACION . NUM PARENTDER
+    (35) vinicial -> PARENTIZQ ID ASIGNACION . ID PARENTDER
+
+    NUM             shift and go to state 107
+    ID              shift and go to state 108
+
+
+
+state 77
+
+    (28) listext -> text COMA . listext
+    (28) listext -> . text COMA listext
+    (29) listext -> . text
+    (24) text -> . TEXTO
+    (25) text -> . ID
+    (26) text -> . NUM
+    (27) text -> . FLOAT
+
+    TEXTO           shift and go to state 44
+    ID              shift and go to state 46
+    NUM             shift and go to state 45
+    FLOAT           shift and go to state 42
+
+
+    text                           shift and go to state 43
+    listext                        shift and go to state 109
+
+state 78
+
+    (23) sentencia -> ESCRIBIR PARENTIZQ listext PARENTDER .
+
+    PUNTOYCOMA      reduce using rule 23 (sentencia -> ESCRIBIR PARENTIZQ listext PARENTDER .)
+    FIN_SI          reduce using rule 23 (sentencia -> ESCRIBIR PARENTIZQ listext PARENTDER .)
+    SINO            reduce using rule 23 (sentencia -> ESCRIBIR PARENTIZQ listext PARENTDER .)
+    FIN_ACCION      reduce using rule 23 (sentencia -> ESCRIBIR PARENTIZQ listext PARENTDER .)
+    HASTA_QUE       reduce using rule 23 (sentencia -> ESCRIBIR PARENTIZQ listext PARENTDER .)
+    FIN_MIENTRAS    reduce using rule 23 (sentencia -> ESCRIBIR PARENTIZQ listext PARENTDER .)
+    FIN_PARA        reduce using rule 23 (sentencia -> ESCRIBIR PARENTIZQ listext PARENTDER .)
+
+
+
+state 79
+
+    (30) sentencia -> REPETIR listasentencias HASTA_QUE cond .
+
+    PUNTOYCOMA      reduce using rule 30 (sentencia -> REPETIR listasentencias HASTA_QUE cond .)
+    FIN_SI          reduce using rule 30 (sentencia -> REPETIR listasentencias HASTA_QUE cond .)
+    SINO            reduce using rule 30 (sentencia -> REPETIR listasentencias HASTA_QUE cond .)
+    FIN_ACCION      reduce using rule 30 (sentencia -> REPETIR listasentencias HASTA_QUE cond .)
+    HASTA_QUE       reduce using rule 30 (sentencia -> REPETIR listasentencias HASTA_QUE cond .)
+    FIN_MIENTRAS    reduce using rule 30 (sentencia -> REPETIR listasentencias HASTA_QUE cond .)
+    FIN_PARA        reduce using rule 30 (sentencia -> REPETIR listasentencias HASTA_QUE cond .)
+
+
+
+state 80
+
+    (47) multiplicarOperador -> DIVISION .
+
+    ID              reduce using rule 47 (multiplicarOperador -> DIVISION .)
+    NUM             reduce using rule 47 (multiplicarOperador -> DIVISION .)
+    FLOAT           reduce using rule 47 (multiplicarOperador -> DIVISION .)
+    PARENTIZQ       reduce using rule 47 (multiplicarOperador -> DIVISION .)
+
+
+
+state 81
+
+    (46) multiplicarOperador -> PRODUCTO .
+
+    ID              reduce using rule 46 (multiplicarOperador -> PRODUCTO .)
+    NUM             reduce using rule 46 (multiplicarOperador -> PRODUCTO .)
+    FLOAT           reduce using rule 46 (multiplicarOperador -> PRODUCTO .)
+    PARENTIZQ       reduce using rule 46 (multiplicarOperador -> PRODUCTO .)
+
+
+
+state 82
+
+    (50) multiplicarOperador -> POTENCIA .
+
+    ID              reduce using rule 50 (multiplicarOperador -> POTENCIA .)
+    NUM             reduce using rule 50 (multiplicarOperador -> POTENCIA .)
+    FLOAT           reduce using rule 50 (multiplicarOperador -> POTENCIA .)
+    PARENTIZQ       reduce using rule 50 (multiplicarOperador -> POTENCIA .)
+
+
+
+state 83
+
+    (45) term -> term multiplicarOperador . factor
+    (51) factor -> . ID
+    (52) factor -> . NUM
+    (53) factor -> . FLOAT
+    (54) factor -> . PARENTIZQ expresion PARENTDER
+
+    ID              shift and go to state 55
+    NUM             shift and go to state 53
+    FLOAT           shift and go to state 52
+    PARENTIZQ       shift and go to state 60
+
+
+    factor                         shift and go to state 110
+
+state 84
+
+    (48) multiplicarOperador -> DIV .
+
+    ID              reduce using rule 48 (multiplicarOperador -> DIV .)
+    NUM             reduce using rule 48 (multiplicarOperador -> DIV .)
+    FLOAT           reduce using rule 48 (multiplicarOperador -> DIV .)
+    PARENTIZQ       reduce using rule 48 (multiplicarOperador -> DIV .)
+
+
+
+state 85
+
+    (49) multiplicarOperador -> MOD .
+
+    ID              reduce using rule 49 (multiplicarOperador -> MOD .)
+    NUM             reduce using rule 49 (multiplicarOperador -> MOD .)
+    FLOAT           reduce using rule 49 (multiplicarOperador -> MOD .)
+    PARENTIZQ       reduce using rule 49 (multiplicarOperador -> MOD .)
+
+
+
+state 86
+
+    (55) cond -> PARENTIZQ listacondicion PARENTDER .
+
+    PUNTOYCOMA      reduce using rule 55 (cond -> PARENTIZQ listacondicion PARENTDER .)
+    FIN_ACCION      reduce using rule 55 (cond -> PARENTIZQ listacondicion PARENTDER .)
+    HASTA_QUE       reduce using rule 55 (cond -> PARENTIZQ listacondicion PARENTDER .)
+    FIN_MIENTRAS    reduce using rule 55 (cond -> PARENTIZQ listacondicion PARENTDER .)
+    FIN_SI          reduce using rule 55 (cond -> PARENTIZQ listacondicion PARENTDER .)
+    SINO            reduce using rule 55 (cond -> PARENTIZQ listacondicion PARENTDER .)
+    FIN_PARA        reduce using rule 55 (cond -> PARENTIZQ listacondicion PARENTDER .)
+    ENTONCES        reduce using rule 55 (cond -> PARENTIZQ listacondicion PARENTDER .)
+    HACER           reduce using rule 55 (cond -> PARENTIZQ listacondicion PARENTDER .)
+
+
+
+state 87
+
+    (59) condicion -> NEGACION expresion .
+    (41) expresion -> expresion . agregarOperador term
+    (42) agregarOperador -> . SUMA
+    (43) agregarOperador -> . RESTA
+
+    CONJUNCION      reduce using rule 59 (condicion -> NEGACION expresion .)
+    DISYUNCION      reduce using rule 59 (condicion -> NEGACION expresion .)
+    PARENTDER       reduce using rule 59 (condicion -> NEGACION expresion .)
+    SUMA            shift and go to state 61
+    RESTA           shift and go to state 54
+
+
+    agregarOperador                shift and go to state 98
+
+state 88
+
+    (58) listacondicion -> condicion DISYUNCION . listacondicion
+    (56) listacondicion -> . condicion
+    (57) listacondicion -> . condicion CONJUNCION listacondicion
+    (58) listacondicion -> . condicion DISYUNCION listacondicion
+    (59) condicion -> . NEGACION expresion
+    (60) condicion -> . expresion relacion expresion
+    (39) expresion -> . term
+    (40) expresion -> . agregarOperador term
+    (41) expresion -> . expresion agregarOperador term
+    (44) term -> . factor
+    (45) term -> . term multiplicarOperador factor
+    (42) agregarOperador -> . SUMA
+    (43) agregarOperador -> . RESTA
+    (51) factor -> . ID
+    (52) factor -> . NUM
+    (53) factor -> . FLOAT
+    (54) factor -> . PARENTIZQ expresion PARENTDER
+
+    NEGACION        shift and go to state 51
+    SUMA            shift and go to state 61
+    RESTA           shift and go to state 54
+    ID              shift and go to state 55
+    NUM             shift and go to state 53
+    FLOAT           shift and go to state 52
+    PARENTIZQ       shift and go to state 60
+
+
+    expresion                      shift and go to state 59
+    term                           shift and go to state 49
+    listacondicion                 shift and go to state 111
+    condicion                      shift and go to state 56
+    factor                         shift and go to state 57
+    agregarOperador                shift and go to state 58
+
+state 89
+
+    (57) listacondicion -> condicion CONJUNCION . listacondicion
+    (56) listacondicion -> . condicion
+    (57) listacondicion -> . condicion CONJUNCION listacondicion
+    (58) listacondicion -> . condicion DISYUNCION listacondicion
+    (59) condicion -> . NEGACION expresion
+    (60) condicion -> . expresion relacion expresion
+    (39) expresion -> . term
+    (40) expresion -> . agregarOperador term
+    (41) expresion -> . expresion agregarOperador term
+    (44) term -> . factor
+    (45) term -> . term multiplicarOperador factor
+    (42) agregarOperador -> . SUMA
+    (43) agregarOperador -> . RESTA
+    (51) factor -> . ID
+    (52) factor -> . NUM
+    (53) factor -> . FLOAT
+    (54) factor -> . PARENTIZQ expresion PARENTDER
+
+    NEGACION        shift and go to state 51
+    SUMA            shift and go to state 61
+    RESTA           shift and go to state 54
+    ID              shift and go to state 55
+    NUM             shift and go to state 53
+    FLOAT           shift and go to state 52
+    PARENTIZQ       shift and go to state 60
+
+
+    expresion                      shift and go to state 59
+    term                           shift and go to state 49
+    listacondicion                 shift and go to state 112
+    condicion                      shift and go to state 56
+    factor                         shift and go to state 57
+    agregarOperador                shift and go to state 58
+
+state 90
+
+    (40) expresion -> agregarOperador term .
+    (45) term -> term . multiplicarOperador factor
+    (46) multiplicarOperador -> . PRODUCTO
+    (47) multiplicarOperador -> . DIVISION
+    (48) multiplicarOperador -> . DIV
+    (49) multiplicarOperador -> . MOD
+    (50) multiplicarOperador -> . POTENCIA
+
+    SUMA            reduce using rule 40 (expresion -> agregarOperador term .)
+    RESTA           reduce using rule 40 (expresion -> agregarOperador term .)
+    PUNTOYCOMA      reduce using rule 40 (expresion -> agregarOperador term .)
+    FIN_ACCION      reduce using rule 40 (expresion -> agregarOperador term .)
+    HASTA_QUE       reduce using rule 40 (expresion -> agregarOperador term .)
+    FIN_MIENTRAS    reduce using rule 40 (expresion -> agregarOperador term .)
+    FIN_SI          reduce using rule 40 (expresion -> agregarOperador term .)
+    SINO            reduce using rule 40 (expresion -> agregarOperador term .)
+    FIN_PARA        reduce using rule 40 (expresion -> agregarOperador term .)
+    IGUALQUE        reduce using rule 40 (expresion -> agregarOperador term .)
+    DISTINTO        reduce using rule 40 (expresion -> agregarOperador term .)
+    MENORQUE        reduce using rule 40 (expresion -> agregarOperador term .)
+    MAYORQUE        reduce using rule 40 (expresion -> agregarOperador term .)
+    MENOROIGUAL     reduce using rule 40 (expresion -> agregarOperador term .)
+    MAYOROIGUAL     reduce using rule 40 (expresion -> agregarOperador term .)
+    DISYUNCION      reduce using rule 40 (expresion -> agregarOperador term .)
+    CONJUNCION      reduce using rule 40 (expresion -> agregarOperador term .)
+    PARENTDER       reduce using rule 40 (expresion -> agregarOperador term .)
+    PRODUCTO        shift and go to state 81
+    DIVISION        shift and go to state 80
+    DIV             shift and go to state 84
+    MOD             shift and go to state 85
+    POTENCIA        shift and go to state 82
+
+
+    multiplicarOperador            shift and go to state 83
+
+state 91
+
+    (67) relacion -> DISYUNCION .
+
+    SUMA            reduce using rule 67 (relacion -> DISYUNCION .)
+    RESTA           reduce using rule 67 (relacion -> DISYUNCION .)
+    ID              reduce using rule 67 (relacion -> DISYUNCION .)
+    NUM             reduce using rule 67 (relacion -> DISYUNCION .)
+    FLOAT           reduce using rule 67 (relacion -> DISYUNCION .)
+    PARENTIZQ       reduce using rule 67 (relacion -> DISYUNCION .)
+
+
+
+state 92
+
+    (61) relacion -> IGUALQUE .
+
+    SUMA            reduce using rule 61 (relacion -> IGUALQUE .)
+    RESTA           reduce using rule 61 (relacion -> IGUALQUE .)
+    ID              reduce using rule 61 (relacion -> IGUALQUE .)
+    NUM             reduce using rule 61 (relacion -> IGUALQUE .)
+    FLOAT           reduce using rule 61 (relacion -> IGUALQUE .)
+    PARENTIZQ       reduce using rule 61 (relacion -> IGUALQUE .)
+
+
+
+state 93
+
+    (62) relacion -> DISTINTO .
+
+    SUMA            reduce using rule 62 (relacion -> DISTINTO .)
+    RESTA           reduce using rule 62 (relacion -> DISTINTO .)
+    ID              reduce using rule 62 (relacion -> DISTINTO .)
+    NUM             reduce using rule 62 (relacion -> DISTINTO .)
+    FLOAT           reduce using rule 62 (relacion -> DISTINTO .)
+    PARENTIZQ       reduce using rule 62 (relacion -> DISTINTO .)
+
+
+
+state 94
+
+    (66) relacion -> MAYOROIGUAL .
+
+    SUMA            reduce using rule 66 (relacion -> MAYOROIGUAL .)
+    RESTA           reduce using rule 66 (relacion -> MAYOROIGUAL .)
+    ID              reduce using rule 66 (relacion -> MAYOROIGUAL .)
+    NUM             reduce using rule 66 (relacion -> MAYOROIGUAL .)
+    FLOAT           reduce using rule 66 (relacion -> MAYOROIGUAL .)
+    PARENTIZQ       reduce using rule 66 (relacion -> MAYOROIGUAL .)
+
+
+
+state 95
+
+    (65) relacion -> MENOROIGUAL .
+
+    SUMA            reduce using rule 65 (relacion -> MENOROIGUAL .)
+    RESTA           reduce using rule 65 (relacion -> MENOROIGUAL .)
+    ID              reduce using rule 65 (relacion -> MENOROIGUAL .)
+    NUM             reduce using rule 65 (relacion -> MENOROIGUAL .)
+    FLOAT           reduce using rule 65 (relacion -> MENOROIGUAL .)
+    PARENTIZQ       reduce using rule 65 (relacion -> MENOROIGUAL .)
+
+
+
+state 96
+
+    (63) relacion -> MENORQUE .
+
+    SUMA            reduce using rule 63 (relacion -> MENORQUE .)
+    RESTA           reduce using rule 63 (relacion -> MENORQUE .)
+    ID              reduce using rule 63 (relacion -> MENORQUE .)
+    NUM             reduce using rule 63 (relacion -> MENORQUE .)
+    FLOAT           reduce using rule 63 (relacion -> MENORQUE .)
+    PARENTIZQ       reduce using rule 63 (relacion -> MENORQUE .)
+
+
+
+state 97
+
+    (64) relacion -> MAYORQUE .
+
+    SUMA            reduce using rule 64 (relacion -> MAYORQUE .)
+    RESTA           reduce using rule 64 (relacion -> MAYORQUE .)
+    ID              reduce using rule 64 (relacion -> MAYORQUE .)
+    NUM             reduce using rule 64 (relacion -> MAYORQUE .)
+    FLOAT           reduce using rule 64 (relacion -> MAYORQUE .)
+    PARENTIZQ       reduce using rule 64 (relacion -> MAYORQUE .)
+
+
+
+state 98
+
+    (41) expresion -> expresion agregarOperador . term
+    (44) term -> . factor
+    (45) term -> . term multiplicarOperador factor
+    (51) factor -> . ID
+    (52) factor -> . NUM
+    (53) factor -> . FLOAT
+    (54) factor -> . PARENTIZQ expresion PARENTDER
+
+    ID              shift and go to state 55
+    NUM             shift and go to state 53
+    FLOAT           shift and go to state 52
+    PARENTIZQ       shift and go to state 60
+
+
+    term                           shift and go to state 113
+    factor                         shift and go to state 57
+
+state 99
+
+    (68) relacion -> CONJUNCION .
+
+    SUMA            reduce using rule 68 (relacion -> CONJUNCION .)
+    RESTA           reduce using rule 68 (relacion -> CONJUNCION .)
+    ID              reduce using rule 68 (relacion -> CONJUNCION .)
+    NUM             reduce using rule 68 (relacion -> CONJUNCION .)
+    FLOAT           reduce using rule 68 (relacion -> CONJUNCION .)
+    PARENTIZQ       reduce using rule 68 (relacion -> CONJUNCION .)
+
+
+
+state 100
+
+    (60) condicion -> expresion relacion . expresion
+    (39) expresion -> . term
+    (40) expresion -> . agregarOperador term
+    (41) expresion -> . expresion agregarOperador term
+    (44) term -> . factor
+    (45) term -> . term multiplicarOperador factor
+    (42) agregarOperador -> . SUMA
+    (43) agregarOperador -> . RESTA
+    (51) factor -> . ID
+    (52) factor -> . NUM
+    (53) factor -> . FLOAT
+    (54) factor -> . PARENTIZQ expresion PARENTDER
+
+    SUMA            shift and go to state 61
+    RESTA           shift and go to state 54
+    ID              shift and go to state 55
+    NUM             shift and go to state 53
+    FLOAT           shift and go to state 52
+    PARENTIZQ       shift and go to state 60
+
+
+    expresion                      shift and go to state 114
+    term                           shift and go to state 49
+    factor                         shift and go to state 57
+    agregarOperador                shift and go to state 58
+
+state 101
+
+    (54) factor -> PARENTIZQ expresion . PARENTDER
+    (41) expresion -> expresion . agregarOperador term
+    (42) agregarOperador -> . SUMA
+    (43) agregarOperador -> . RESTA
+
+    PARENTDER       shift and go to state 115
+    SUMA            shift and go to state 61
+    RESTA           shift and go to state 54
+
+
+    agregarOperador                shift and go to state 98
+
+state 102
+
+    (33) sentencia -> MIENTRAS cond HACER PUNTOYCOMA . listasentencias FIN_MIENTRAS
+    (18) listasentencias -> . sentencia PUNTOYCOMA listasentencias
+    (19) listasentencias -> . sentencia
+    (20) listasentencias -> . sentencia PUNTOYCOMA
+    (21) sentencia -> . ID ASIGNACION expresion
+    (22) sentencia -> . LEER PARENTIZQ ID PARENTDER
+    (23) sentencia -> . ESCRIBIR PARENTIZQ listext PARENTDER
+    (30) sentencia -> . REPETIR listasentencias HASTA_QUE cond
+    (31) sentencia -> . SI cond ENTONCES PUNTOYCOMA listasentencias FIN_SI
+    (32) sentencia -> . SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI
+    (33) sentencia -> . MIENTRAS cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS
+    (38) sentencia -> . PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA
+
+    ID              shift and go to state 20
+    LEER            shift and go to state 21
+    ESCRIBIR        shift and go to state 16
+    REPETIR         shift and go to state 17
+    SI              shift and go to state 22
+    MIENTRAS        shift and go to state 19
+    PARA            shift and go to state 14
+
+
+    listasentencias                shift and go to state 116
+    sentencia                      shift and go to state 15
+
+state 103
+
+    (22) sentencia -> LEER PARENTIZQ ID PARENTDER .
+
+    PUNTOYCOMA      reduce using rule 22 (sentencia -> LEER PARENTIZQ ID PARENTDER .)
+    FIN_SI          reduce using rule 22 (sentencia -> LEER PARENTIZQ ID PARENTDER .)
+    SINO            reduce using rule 22 (sentencia -> LEER PARENTIZQ ID PARENTDER .)
+    FIN_ACCION      reduce using rule 22 (sentencia -> LEER PARENTIZQ ID PARENTDER .)
+    HASTA_QUE       reduce using rule 22 (sentencia -> LEER PARENTIZQ ID PARENTDER .)
+    FIN_MIENTRAS    reduce using rule 22 (sentencia -> LEER PARENTIZQ ID PARENTDER .)
+    FIN_PARA        reduce using rule 22 (sentencia -> LEER PARENTIZQ ID PARENTDER .)
+
+
+
+state 104
+
+    (31) sentencia -> SI cond ENTONCES PUNTOYCOMA . listasentencias FIN_SI
+    (32) sentencia -> SI cond ENTONCES PUNTOYCOMA . listasentencias SINO PUNTOYCOMA listasentencias FIN_SI
+    (18) listasentencias -> . sentencia PUNTOYCOMA listasentencias
+    (19) listasentencias -> . sentencia
+    (20) listasentencias -> . sentencia PUNTOYCOMA
+    (21) sentencia -> . ID ASIGNACION expresion
+    (22) sentencia -> . LEER PARENTIZQ ID PARENTDER
+    (23) sentencia -> . ESCRIBIR PARENTIZQ listext PARENTDER
+    (30) sentencia -> . REPETIR listasentencias HASTA_QUE cond
+    (31) sentencia -> . SI cond ENTONCES PUNTOYCOMA listasentencias FIN_SI
+    (32) sentencia -> . SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI
+    (33) sentencia -> . MIENTRAS cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS
+    (38) sentencia -> . PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA
+
+    ID              shift and go to state 20
+    LEER            shift and go to state 21
+    ESCRIBIR        shift and go to state 16
+    REPETIR         shift and go to state 17
+    SI              shift and go to state 22
+    MIENTRAS        shift and go to state 19
+    PARA            shift and go to state 14
+
+
+    listasentencias                shift and go to state 117
+    sentencia                      shift and go to state 15
+
+state 105
+
+    (10) declaraciones -> ID DOSPUNTOS tipodato declaraciones .
+
+    PROCESO         reduce using rule 10 (declaraciones -> ID DOSPUNTOS tipodato declaraciones .)
+
+
+
+state 106
+
+    (38) sentencia -> PARA vinicial HASTA vfinal COMA . NUM HACER PUNTOYCOMA listasentencias FIN_PARA
+
+    NUM             shift and go to state 118
+
+
+
+state 107
+
+    (34) vinicial -> PARENTIZQ ID ASIGNACION NUM . PARENTDER
+
+    PARENTDER       shift and go to state 119
+
+
+
+state 108
+
+    (35) vinicial -> PARENTIZQ ID ASIGNACION ID . PARENTDER
+
+    PARENTDER       shift and go to state 120
+
+
+
+state 109
+
+    (28) listext -> text COMA listext .
+
+    PARENTDER       reduce using rule 28 (listext -> text COMA listext .)
+
+
+
+state 110
+
+    (45) term -> term multiplicarOperador factor .
+
+    PRODUCTO        reduce using rule 45 (term -> term multiplicarOperador factor .)
+    DIVISION        reduce using rule 45 (term -> term multiplicarOperador factor .)
+    DIV             reduce using rule 45 (term -> term multiplicarOperador factor .)
+    MOD             reduce using rule 45 (term -> term multiplicarOperador factor .)
+    POTENCIA        reduce using rule 45 (term -> term multiplicarOperador factor .)
+    SUMA            reduce using rule 45 (term -> term multiplicarOperador factor .)
+    RESTA           reduce using rule 45 (term -> term multiplicarOperador factor .)
+    PUNTOYCOMA      reduce using rule 45 (term -> term multiplicarOperador factor .)
+    FIN_ACCION      reduce using rule 45 (term -> term multiplicarOperador factor .)
+    HASTA_QUE       reduce using rule 45 (term -> term multiplicarOperador factor .)
+    FIN_MIENTRAS    reduce using rule 45 (term -> term multiplicarOperador factor .)
+    FIN_SI          reduce using rule 45 (term -> term multiplicarOperador factor .)
+    SINO            reduce using rule 45 (term -> term multiplicarOperador factor .)
+    FIN_PARA        reduce using rule 45 (term -> term multiplicarOperador factor .)
+    IGUALQUE        reduce using rule 45 (term -> term multiplicarOperador factor .)
+    DISTINTO        reduce using rule 45 (term -> term multiplicarOperador factor .)
+    MENORQUE        reduce using rule 45 (term -> term multiplicarOperador factor .)
+    MAYORQUE        reduce using rule 45 (term -> term multiplicarOperador factor .)
+    MENOROIGUAL     reduce using rule 45 (term -> term multiplicarOperador factor .)
+    MAYOROIGUAL     reduce using rule 45 (term -> term multiplicarOperador factor .)
+    DISYUNCION      reduce using rule 45 (term -> term multiplicarOperador factor .)
+    CONJUNCION      reduce using rule 45 (term -> term multiplicarOperador factor .)
+    PARENTDER       reduce using rule 45 (term -> term multiplicarOperador factor .)
+
+
+
+state 111
+
+    (58) listacondicion -> condicion DISYUNCION listacondicion .
+
+    PARENTDER       reduce using rule 58 (listacondicion -> condicion DISYUNCION listacondicion .)
+
+
+
+state 112
+
+    (57) listacondicion -> condicion CONJUNCION listacondicion .
+
+    PARENTDER       reduce using rule 57 (listacondicion -> condicion CONJUNCION listacondicion .)
+
+
+
+state 113
+
+    (41) expresion -> expresion agregarOperador term .
+    (45) term -> term . multiplicarOperador factor
+    (46) multiplicarOperador -> . PRODUCTO
+    (47) multiplicarOperador -> . DIVISION
+    (48) multiplicarOperador -> . DIV
+    (49) multiplicarOperador -> . MOD
+    (50) multiplicarOperador -> . POTENCIA
+
+    SUMA            reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    RESTA           reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    PUNTOYCOMA      reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    FIN_ACCION      reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    HASTA_QUE       reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    FIN_MIENTRAS    reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    FIN_SI          reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    SINO            reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    FIN_PARA        reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    IGUALQUE        reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    DISTINTO        reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    MENORQUE        reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    MAYORQUE        reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    MENOROIGUAL     reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    MAYOROIGUAL     reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    DISYUNCION      reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    CONJUNCION      reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    PARENTDER       reduce using rule 41 (expresion -> expresion agregarOperador term .)
+    PRODUCTO        shift and go to state 81
+    DIVISION        shift and go to state 80
+    DIV             shift and go to state 84
+    MOD             shift and go to state 85
+    POTENCIA        shift and go to state 82
+
+
+    multiplicarOperador            shift and go to state 83
+
+state 114
+
+    (60) condicion -> expresion relacion expresion .
+    (41) expresion -> expresion . agregarOperador term
+    (42) agregarOperador -> . SUMA
+    (43) agregarOperador -> . RESTA
+
+    CONJUNCION      reduce using rule 60 (condicion -> expresion relacion expresion .)
+    DISYUNCION      reduce using rule 60 (condicion -> expresion relacion expresion .)
+    PARENTDER       reduce using rule 60 (condicion -> expresion relacion expresion .)
+    SUMA            shift and go to state 61
+    RESTA           shift and go to state 54
+
+
+    agregarOperador                shift and go to state 98
+
+state 115
+
+    (54) factor -> PARENTIZQ expresion PARENTDER .
+
+    PRODUCTO        reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    DIVISION        reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    DIV             reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    MOD             reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    POTENCIA        reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    SUMA            reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    RESTA           reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    PUNTOYCOMA      reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    FIN_ACCION      reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    HASTA_QUE       reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    FIN_MIENTRAS    reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    FIN_SI          reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    SINO            reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    FIN_PARA        reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    IGUALQUE        reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    DISTINTO        reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    MENORQUE        reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    MAYORQUE        reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    MENOROIGUAL     reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    MAYOROIGUAL     reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    DISYUNCION      reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    CONJUNCION      reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+    PARENTDER       reduce using rule 54 (factor -> PARENTIZQ expresion PARENTDER .)
+
+
+
+state 116
+
+    (33) sentencia -> MIENTRAS cond HACER PUNTOYCOMA listasentencias . FIN_MIENTRAS
+
+    FIN_MIENTRAS    shift and go to state 121
+
+
+
+state 117
+
+    (31) sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias . FIN_SI
+    (32) sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias . SINO PUNTOYCOMA listasentencias FIN_SI
+
+    FIN_SI          shift and go to state 122
+    SINO            shift and go to state 123
+
+
+
+state 118
+
+    (38) sentencia -> PARA vinicial HASTA vfinal COMA NUM . HACER PUNTOYCOMA listasentencias FIN_PARA
+
+    HACER           shift and go to state 124
+
+
+
+state 119
+
+    (34) vinicial -> PARENTIZQ ID ASIGNACION NUM PARENTDER .
+
+    HASTA           reduce using rule 34 (vinicial -> PARENTIZQ ID ASIGNACION NUM PARENTDER .)
+
+
+
+state 120
+
+    (35) vinicial -> PARENTIZQ ID ASIGNACION ID PARENTDER .
+
+    HASTA           reduce using rule 35 (vinicial -> PARENTIZQ ID ASIGNACION ID PARENTDER .)
+
+
+
+state 121
+
+    (33) sentencia -> MIENTRAS cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS .
+
+    PUNTOYCOMA      reduce using rule 33 (sentencia -> MIENTRAS cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS .)
+    FIN_SI          reduce using rule 33 (sentencia -> MIENTRAS cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS .)
+    SINO            reduce using rule 33 (sentencia -> MIENTRAS cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS .)
+    FIN_ACCION      reduce using rule 33 (sentencia -> MIENTRAS cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS .)
+    HASTA_QUE       reduce using rule 33 (sentencia -> MIENTRAS cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS .)
+    FIN_MIENTRAS    reduce using rule 33 (sentencia -> MIENTRAS cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS .)
+    FIN_PARA        reduce using rule 33 (sentencia -> MIENTRAS cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS .)
+
+
+
+state 122
+
+    (31) sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias FIN_SI .
+
+    PUNTOYCOMA      reduce using rule 31 (sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias FIN_SI .)
+    FIN_SI          reduce using rule 31 (sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias FIN_SI .)
+    SINO            reduce using rule 31 (sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias FIN_SI .)
+    FIN_ACCION      reduce using rule 31 (sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias FIN_SI .)
+    HASTA_QUE       reduce using rule 31 (sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias FIN_SI .)
+    FIN_MIENTRAS    reduce using rule 31 (sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias FIN_SI .)
+    FIN_PARA        reduce using rule 31 (sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias FIN_SI .)
+
+
+
+state 123
+
+    (32) sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias SINO . PUNTOYCOMA listasentencias FIN_SI
+
+    PUNTOYCOMA      shift and go to state 125
+
+
+
+state 124
+
+    (38) sentencia -> PARA vinicial HASTA vfinal COMA NUM HACER . PUNTOYCOMA listasentencias FIN_PARA
+
+    PUNTOYCOMA      shift and go to state 126
+
+
+
+state 125
+
+    (32) sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA . listasentencias FIN_SI
+    (18) listasentencias -> . sentencia PUNTOYCOMA listasentencias
+    (19) listasentencias -> . sentencia
+    (20) listasentencias -> . sentencia PUNTOYCOMA
+    (21) sentencia -> . ID ASIGNACION expresion
+    (22) sentencia -> . LEER PARENTIZQ ID PARENTDER
+    (23) sentencia -> . ESCRIBIR PARENTIZQ listext PARENTDER
+    (30) sentencia -> . REPETIR listasentencias HASTA_QUE cond
+    (31) sentencia -> . SI cond ENTONCES PUNTOYCOMA listasentencias FIN_SI
+    (32) sentencia -> . SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI
+    (33) sentencia -> . MIENTRAS cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS
+    (38) sentencia -> . PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA
+
+    ID              shift and go to state 20
+    LEER            shift and go to state 21
+    ESCRIBIR        shift and go to state 16
+    REPETIR         shift and go to state 17
+    SI              shift and go to state 22
+    MIENTRAS        shift and go to state 19
+    PARA            shift and go to state 14
+
+
+    listasentencias                shift and go to state 127
+    sentencia                      shift and go to state 15
+
+state 126
+
+    (38) sentencia -> PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA . listasentencias FIN_PARA
+    (18) listasentencias -> . sentencia PUNTOYCOMA listasentencias
+    (19) listasentencias -> . sentencia
+    (20) listasentencias -> . sentencia PUNTOYCOMA
+    (21) sentencia -> . ID ASIGNACION expresion
+    (22) sentencia -> . LEER PARENTIZQ ID PARENTDER
+    (23) sentencia -> . ESCRIBIR PARENTIZQ listext PARENTDER
+    (30) sentencia -> . REPETIR listasentencias HASTA_QUE cond
+    (31) sentencia -> . SI cond ENTONCES PUNTOYCOMA listasentencias FIN_SI
+    (32) sentencia -> . SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI
+    (33) sentencia -> . MIENTRAS cond HACER PUNTOYCOMA listasentencias FIN_MIENTRAS
+    (38) sentencia -> . PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA
+
+    ID              shift and go to state 20
+    LEER            shift and go to state 21
+    ESCRIBIR        shift and go to state 16
+    REPETIR         shift and go to state 17
+    SI              shift and go to state 22
+    MIENTRAS        shift and go to state 19
+    PARA            shift and go to state 14
+
+
+    listasentencias                shift and go to state 128
+    sentencia                      shift and go to state 15
+
+state 127
+
+    (32) sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias . FIN_SI
+
+    FIN_SI          shift and go to state 129
+
+
+
+state 128
+
+    (38) sentencia -> PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias . FIN_PARA
+
+    FIN_PARA        shift and go to state 130
+
+
+
+state 129
+
+    (32) sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI .
+
+    PUNTOYCOMA      reduce using rule 32 (sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI .)
+    FIN_SI          reduce using rule 32 (sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI .)
+    SINO            reduce using rule 32 (sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI .)
+    FIN_ACCION      reduce using rule 32 (sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI .)
+    HASTA_QUE       reduce using rule 32 (sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI .)
+    FIN_MIENTRAS    reduce using rule 32 (sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI .)
+    FIN_PARA        reduce using rule 32 (sentencia -> SI cond ENTONCES PUNTOYCOMA listasentencias SINO PUNTOYCOMA listasentencias FIN_SI .)
+
+
+
+state 130
+
+    (38) sentencia -> PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA .
+
+    PUNTOYCOMA      reduce using rule 38 (sentencia -> PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA .)
+    FIN_SI          reduce using rule 38 (sentencia -> PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA .)
+    SINO            reduce using rule 38 (sentencia -> PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA .)
+    FIN_ACCION      reduce using rule 38 (sentencia -> PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA .)
+    HASTA_QUE       reduce using rule 38 (sentencia -> PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA .)
+    FIN_MIENTRAS    reduce using rule 38 (sentencia -> PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA .)
+    FIN_PARA        reduce using rule 38 (sentencia -> PARA vinicial HASTA vfinal COMA NUM HACER PUNTOYCOMA listasentencias FIN_PARA .)
+
+

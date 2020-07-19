@@ -1,0 +1,18 @@
+accion potencia _es
+ambiente
+i: entero
+x:entero
+y:entero
+# calcula la potencia de un numero 
+dado a partir de multiples 
+multiplicaciones#
+proceso
+escribir("ingrese numero");
+leer(x);
+escribir("ingrese potencia");
+leer(y);
+para (i:=1) hasta y , 1 hacer
+x:=(x*x);
+fin_para;
+escribir("numero", x);
+fin_accion

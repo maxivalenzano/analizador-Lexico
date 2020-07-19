@@ -1,0 +1,35 @@
+accion EjemploOperacion _es
+	ambiente
+		@algoritmo para probar bucles y operaciones
+		num2:numero
+	proceso
+		Escribir("Ingrese Un numero");
+		Leer(Num1);
+		Escribir("Ingrese Un numero");
+		Leer(Num2);
+		si ((Num1 > 0 _y Num2 > 0) _o (num1 _mod 2 = 0)) entonces
+			para (a:=1) hasta 10, 1 hacer
+				num1 := num1 + 1;
+				num2 := num2 -  1;
+			fin_para;
+			R := num1 _div num2;
+			escribir("El resultado es", R);
+		sino 
+			si _no(Num > 10) entonces
+				mientras (Num1 <> 10) hacer
+					num1 := num1;
+					num2 := 4;
+				fin_mientras;
+			sino
+				repetir
+					si (num1+num2 > 0) entonces
+						escribir(num1+1);
+						escribir(num2-1);
+
+					fin_si; 
+				hasta_que (Num2 > 100);
+				
+			fin_si;
+		fin_si;
+
+fin_accion
